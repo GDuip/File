@@ -1,6 +1,5 @@
-// index.js (Main Application File)
-
-import DOMPurify from 'dompurify';
+//No import statement needed
+const DOMPurify = window.DOMPurify;
 
 // --- Constants ---
 const MAX_TABS = 20;
