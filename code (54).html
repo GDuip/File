@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Robust CSP (adjust as needed, but be careful!) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src * data:; connect-src 'self' https://search.brave.com https://www.google.com https://yandex.com https://duckduckgo.com; frame-src *; font-src 'self' https://fonts.gstatic.com;">
+    <title>Advanced Browser</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <!-- Add more PWA-related tags -->
+    <meta name="theme-color" content="#444">  <!-- Match your theme -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icon.png"> <!-- Your app icon -->
+
+</head>
+<body>
+    <div id="main-container">
+
+       <div id="url-bar">
+            <div id="controls">
+                <button id="back" disabled><span class="material-icons">arrow_back</span></button>
+                <button id="forward" disabled><span class="material-icons">arrow_forward</span></button>
+                <button id="reloadBtn"><span class="material-icons">refresh</span></button>
+                <button id="historyButton"><span class="material-icons">history</span></button>
+                <input type="text" id="url" placeholder="Enter URL or search term">
+                <button id="searchIcon"><span class="material-icons">search</span></button>
+                <button id="bookmarkBtn"><span class="material-icons">star_border</span></button>
+                <button id="bookmarksButton"><span class="material-icons">bookmarks</span></button>
+                <button id="themeToggle"><span class="material-icons">brightness_4</span></button>
+                <button id="settingsButton"><span class="material-icons">settings</span></button>
+
+                <!-- Find in Page Container -->
+                <div id="findInPageContainer" style="display: none;">
+                    <input type="text" id="findInPageInput" placeholder="Find in page">
+                    <button id="findInPagePrev"><span class="material-icons">arrow_upward</span></button>
+                    <button id="findInPageNext"><span class="material-icons">arrow_downward</span></button>
+                    <button id="findInPageClose"><span class="material-icons">close</span></button>
+                </div>
+                 <!-- Loading Indicator (initially hidden) -->
+                <div id="loadingIndicator" style="display: none;">
+                    <span class="material-icons">autorenew</span>
+                </div>
+            </div>
+
+        </div>
+        <div id="tabs"></div>
+        <div id="browsers"></div>
+    </div>
+
+     <div id="historyDropdown" class="dropdown-content">
+        <ul id="historyList"></ul>
+        <button id="clearHistory">Clear History</button>
+    </div>
+
+    <div id="bookmarksDropdown" class="dropdown-content">
+        <ul id="bookmarksList"></ul>
+    </div>
+
+
+    <div id="settingsMenu" class="dropdown-content">
+        <label for="searchEngineSelect">Search Engine:</label>
+        <select id="searchEngineSelect">
+            <option value="brave">Brave</option>
+            <option value="google">Google</option>
+            <option value="yandex">Yandex</option>
+            <option value="duckduckgo">DuckDuckgo</option>
+        </select>
+    </div>
+
+    <ul id="url-suggestions"></ul>
+    <script type="module" src="index.js"></script>
+</body>
+</html>
