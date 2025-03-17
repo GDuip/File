@@ -7,7 +7,19 @@ const MAX_HISTORY_ENTRIES = 100;
 const DEFAULT_SEARCH_ENGINE = 'brave';
 const DEFAULT_LANGUAGE = 'en';
 const URL_REGEX = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
-const WEB_SOCKET_PROXY_URL = null; //  Replace with your WebSocket proxy URL (server-side implementation needed)
+// Establish websocket connection
+const socket = new WebSocket("wss://api.whitebit.com/ws");
+ 
+// Set up periodic ping
+setInterval(() => {
+  if (socket.readyState === WebSocket.OPEN) {
+    socket.send(JSON.stringify({
+            id: 0,
+            method: "ping",
+            params: [],
+        }));
+  }
+}, 50000); // Every 50 seconds
 const DEBOUNCE_DELAY = 300; // Delay for debouncing search input
 
 // --- DOM Element References ---
